@@ -18,8 +18,7 @@ jobs:
           node-version: 18
         
       - name: testing code
-        run: |
-          cd Actions
+        run:
           npm test
 
       - name: running code
