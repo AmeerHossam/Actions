@@ -1,0 +1,14 @@
+name: Second Workflow
+on: push
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print greeting
+        run: npm test
+
+  run-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print greeting
+        run: npm run
