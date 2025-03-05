@@ -6,8 +6,6 @@ jobs:
     steps:
       - name: Gets code
         uses: actions/checkout@v4.2.2
-        with:
-          path: ../02 Starting Project
           
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.2.0
@@ -18,8 +16,12 @@ jobs:
           node-version: 18
         
       - name: testing code
-        run:
+        run: |
+          cd "02 Starting Project"
+
           npm test
 
       - name: running code
-        run: npm run
+        run: |
+          cd "02 Starting Project"
+          npm run
