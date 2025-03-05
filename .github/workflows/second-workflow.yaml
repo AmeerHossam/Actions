@@ -7,7 +7,7 @@ jobs:
       - name: Gets code
         uses: actions/checkout@v4.2.2
         with:
-          repository: AmeerHossam/Actions
+          repository: AmeerHossam/02 Starting Project
           
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.2.0
