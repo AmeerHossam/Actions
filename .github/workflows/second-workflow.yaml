@@ -14,7 +14,12 @@ jobs:
     # It also admits such aliases as lts/*, latest, nightly and canary builds
     # Examples: 12.x, 10.15.1, >=10.15.0, lts/Hydrogen, 16-nightly, latest, node
           node-version: 18
-        
+          
+      - name: Install dependencies
+        run: |
+          cd "02 Starting Project"
+          npm install  # Ensures vitest and other dependencies are installed
+          
       - name: testing code
         run: |
           cd "02 Starting Project"
