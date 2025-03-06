@@ -27,6 +27,7 @@ jobs:
           npm test
 
   deploy:
+    needs: test-job
     runs-on: ubuntu-latest
     steps:
       - name: Gets code
@@ -47,4 +48,4 @@ jobs:
       - name: running code
         run: |
           cd "02 Starting Project"
-          npm run
+          npm run build
