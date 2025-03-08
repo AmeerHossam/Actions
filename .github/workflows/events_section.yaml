@@ -9,7 +9,7 @@ on:
         - main
         - dev
         paths-ignore:
-        - '.github/workflows/'
+        - '.github/workflows/*'
 jobs:
   test-job:
     runs-on: ubuntu-latest
