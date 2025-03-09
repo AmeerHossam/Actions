@@ -49,3 +49,9 @@ jobs:
         run: |
           cd "02 Starting Project"
           npm run build
+      - name: Uploading Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path:
+            package.json
