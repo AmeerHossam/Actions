@@ -6,6 +6,7 @@ on:
       - dev
     paths:
       - '01 Starting Project/**'
+  workflow_dispatch:
 env:
   MONGODB_DB_NAME: my-db-demo
   PORT: 3000
@@ -48,4 +49,4 @@ jobs:
       - name: Output information
         run: |        
             echo "MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}"
-
+        working-directory: "01 Starting Project"
