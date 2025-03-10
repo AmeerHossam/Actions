@@ -39,10 +39,6 @@ jobs:
         run: |
            echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
   deploy:
-    env:
-      MONGODB_CLUSTER_ADDRESS: cluster0.iuvw8.mongodb.net
-      MONGODB_USERNAME: amir
-      MONGODB_PASSWORD: dbUserPassword
     needs: test
     runs-on: ubuntu-latest
     defaults:
@@ -52,5 +48,5 @@ jobs:
       - name: Output information
         run: |        
             echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
-            echo "MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}"
+            echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
 
