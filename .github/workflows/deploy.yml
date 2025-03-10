@@ -8,7 +8,6 @@ on:
       - '01 Starting Project/**'
   workflow_dispatch:
 env:
-  MONGODB_DB_NAME: my-db-demo
   PORT: 3000
 jobs:
   test:
@@ -16,7 +15,6 @@ jobs:
     env:
       MONGODB_CLUSTER_ADDRESS: cluster0.iuvw8.mongodb.net
       MONGODB_USERNAME: amir
-      MONGODB_PASSWORD: dbUserPassword
     runs-on: ubuntu-latest
     defaults:
       run:
