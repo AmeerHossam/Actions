@@ -4,6 +4,8 @@ on:
     branches:
       - main
       - dev
+    paths:
+      - '01 Starting Project/**'
 env:
   MONGODB_DB_NAME: my-db-demo
   PORT: 3000
@@ -15,6 +17,10 @@ jobs:
       MONGODB_USERNAME: amir
       MONGODB_PASSWORD: dbUserPassword
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 01 Starting Project # Set the working directory
+
     steps:
       - name: Get Code
         uses: actions/checkout@v3
@@ -39,6 +45,9 @@ jobs:
       MONGODB_PASSWORD: dbUserPassword
     needs: test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 01 Starting Project
     steps:
       - name: Output information
         run: |        
