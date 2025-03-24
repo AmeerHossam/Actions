@@ -1,5 +1,9 @@
 name: Second Workflow
-on: [push, workflow_dispatch]
+on: 
+  push:
+      paths:
+        - '02 Starting Project/**'
+  workflow_dispatch:
 jobs:
   test-job:
     runs-on: ubuntu-latest
@@ -14,12 +18,16 @@ jobs:
     # It also admits such aliases as lts/*, latest, nightly and canary builds
     # Examples: 12.x, 10.15.1, >=10.15.0, lts/Hydrogen, 16-nightly, latest, node
           node-version: 18
-          
+      - name: caching
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}          
       - name: Install dependencies
         run: |
           cd "02 Starting Project"
           npm ci  # Ensures vitest and other dependencies are installed
-          
+
       - name: testing code
         run: |
           cd "02 Starting Project"
@@ -49,3 +57,9 @@ jobs:
         run: |
           cd "02 Starting Project"
           npm run build
+      - name: Uploading Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path:
+            02 Starting Project/package.json
