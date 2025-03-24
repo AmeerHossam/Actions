@@ -26,3 +26,10 @@ jobs:
               run: echo "Deploying & uploading"
             - name: Set result Output
               run: echo"::set-output name=step-result::success"
+    print-deploy-result:
+        needs: deploy
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Deploy output
+              run: |
+                echo "${{ needs.deploy.outputs.result }}"
