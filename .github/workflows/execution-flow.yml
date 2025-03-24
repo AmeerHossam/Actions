@@ -8,7 +8,11 @@ on:
   workflow_dispatch:
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12,14,16]
+        operating-system: [ubuntu-latest,windows-latest]
+    runs-on: ${{ matrix.operating-system }}
     defaults:
       run:
         working-directory: 03 Starting Project
@@ -79,20 +83,9 @@ jobs:
           path: dist
   deploy:
     needs: build
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: 03 Starting Project
-    steps:
-      - name: Get build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist-files
-      - name: Output contents
-        run: ls
-      - name: Deploy
-        run: echo "Deploying..."
-
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      artifact-name: dist-files
   report:
     needs: [lint,deploy]
     if: failure()
